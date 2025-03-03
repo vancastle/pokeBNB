@@ -1,5 +1,8 @@
 class BookingsController < ApplicationController
+  before_action :set_user, only: %i[index new create]
+  before_action :set_deck, only: %i[new create]
   def index
+    @bookings = Booking.where("user_id = ?", @user.id)
   end
 
   def new
@@ -13,7 +16,7 @@ class BookingsController < ApplicationController
     @booking.deck = @deck
 
     if @booking.save
-      redirect_to root_path
+      redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +29,7 @@ class BookingsController < ApplicationController
   end
 
   def set_deck
-    @deck = Deck.find(params[:id])
+    @deck = Deck.find(params[:deck_id])
   end
 
   def booking_params
