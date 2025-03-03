@@ -1,0 +1,8 @@
+<h1>Ajout d'un nouveau Deck</h1>
+
+
+<%= simple_form_for(@deck) do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+<%= link_to "Back", decks_path, class: "btn btn-success" %>
