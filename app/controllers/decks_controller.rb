@@ -5,6 +5,8 @@ class DecksController < ApplicationController
     @decks = Deck.all
   end
 
+  def show; end
+
   def new
     @deck = Deck.new
   end
@@ -19,15 +21,13 @@ class DecksController < ApplicationController
     end
   end
 
-  def show; end
-
   private
-
-  def deck_params
-    params.require(:deck).permit(:name)
-  end
 
   def set_deck
     @deck = Deck.find(params[:id])
+  end
+
+  def deck_params
+    params.require(:deck).permit(:name)
   end
 end
