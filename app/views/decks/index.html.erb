@@ -1,10 +1,20 @@
-<h1>Mes Decks</h1>
-
-<ul>
-  <% @decks.each do |deck| %>
-    <li>
-      <h6> Name: <%= link_to deck.name, deck_path(deck) %></h6>
-      <p>created by: <%= deck.user.username %></p>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @decks.each do |deck| %>
+      <div class="col">
+        <div class="card h-100" style="width: 18rem;">
+          <%= link_to deck_path(deck) do %>
+            <img src=<%= deck.img_url %> class="card-img-top" alt=<%= deck.title %>>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= deck.title %></h5>
+            <p class="card-text"><%= deck.description %></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Created by: <%= deck.user.username %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

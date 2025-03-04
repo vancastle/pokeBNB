@@ -63,44 +63,42 @@ marc = User.create!(
 )
 
 
-puts "Creating pikachu"
+
 pikachu = Deck.new(name: "Pikachu EX")
 associate_photos(pikachu)
 pikachu.user = victoire
 pikachu.save!
 
-puts "Creating charizard"
+
 charizard = Deck.new(name: "Charizard EX")
 associate_photos(charizard)
 charizard.user = victoire
 charizard.save!
 
-puts "Creating mewto"
 mewtwo = Deck.new(name: "Mewtwo EX")
 associate_photos(mewtwo)
 mewtwo.user = victoire
-mewtwo.save!
+mewtwo.save
 
-puts "Creating mew"
 mew = Deck.new(name: "Mew EX")
 associate_photos(mew)
 mew.user = marc
 mew.save!
 
-puts "Creating dialga"
+
 dialga = Deck.new(name: "Dialga EX")
 associate_photos(dialga)
 dialga.user = alvaro
 dialga.save!
 
 
-puts "Creating palkia"
+
 palkia = Deck.new(name: "Palkia EX")
 associate_photos(palkia)
 palkia.user = alvaro
 palkia.save!
 
-puts "Creating arceus"
+
 
 arceus = Deck.new(name: "Arceus EX")
 associate_photos(arceus)

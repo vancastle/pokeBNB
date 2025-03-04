@@ -54,10 +54,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_04_152824) do
   end
 
   create_table "decks", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
+    t.string "img_url"
+    t.string "description"
     t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
