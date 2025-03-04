@@ -1,14 +1,75 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=asset_path('5.jpg') %>);">
+  <div class="container">
+    <h1><strong>POKE BNB </strong></h1>
+    <p>Loue ton deck, domine les tournois.</p>
+    <div class="button-container">
+      <a class="btn btn-flat" href="#">Louer un deck</a>
+      <a class="btn btn-flat" href="#">Mettre en location</a>
+    </div>
+  </div>
+</div>
+
+<h2>"Découvrez nos derniers decks exclusifs et boostez vos performances !"</h2>
+
+<div class="box">
+    <div class="container">
+      <div class="card-trip">
+          <div>
+            <p>"L'Ascension du Dragon Céleste"</p>
+          </div>
+          <img src="https://static.pkmcards.fr/cards/fr/ssp/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-ssp-fr-037-ecarlate-et-violet-etincelles-deferlantes-scovilain-ex.webp" />
+          <div class="card-trip-infos">
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="card-trip">
+          <div>
+            <p>"L'Ascension du Dragon Céleste"</p>
+          </div>
+          <img src="https://static.pkmcards.fr/cards/fr/tef/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-tef-fr-193-ecarlate-et-violet-forces-temporelles-ectoplasma-ex.webp" />
+          <div class="card-trip-infos">
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="card-trip">
+          <div>
+            <p>"L'Ascension du Dragon Céleste"</p>
+          </div>
+          <img src="https://static.pkmcards.fr/cards/fr/bus/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-bus-fr-080-soleil-et-lune-ombres-ardentes-marshadow-gx.webp" />
+          <div class="card-trip-infos">
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="card-trip">
+          <div>
+            <p>"L'Ascension du Dragon Céleste"</p>
+          </div>
+          <img src="https://static.pkmcards.fr/cards/fr/obf/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-obf-fr-153-ecarlate-et-violet-flammes-obsidiennes-melmetal-ex.webp" />
+          <div class="card-trip-infos">
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+      </div>
+    </div>
+</div>
 
 
-<% if user_signed_in? %>
-  <%= current_user.username %>
-  <%= link_to "access bookings", bookings_path %>
-<% else %>
-  <%= link_to "login", new_user_session_path %>
-  <%= link_to "register", new_user_registration_path %>
-<% end %>
+<%# <% if user_signed_in? %>
+  <%# <%= current_user.username %>
+  <%# <%= link_to "access bookings", bookings_path %>
+<%# <% else %>
+  <%# <%= link_to "login", new_user_session_path %>
+  <%# <%= link_to "register", new_user_registration_path %>
+<%# <% end %>
 
 
-<%= link_to "access decks", decks_path %>
+<%# <%= link_to "access decks", decks_path %>
