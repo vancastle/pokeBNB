@@ -3,9 +3,8 @@
 <ul>
   <% @decks.each do |deck| %>
     <li>
-       <h2> Name: <%= link_to deck.name, deck_path(deck) %></h2>
-      <%= deck.name %>
-      <strong><%= deck.category.capitalize %></strong>
+      <h6> Name: <%= link_to deck.name, deck_path(deck) %></h6>
+      <p>created by: <%= deck.user.username %></p>
     </li>
   <% end %>
 </ul>

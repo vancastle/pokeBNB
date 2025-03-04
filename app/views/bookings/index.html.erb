@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <ul>
+        <% @bookings.each do |booking| %>
+          <li>
+            <span><%= booking.deck.name %></span> |
+            <span>from: <%= booking.date_of_beginning %></span>
+            <span>until: <%= booking.date_of_end %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

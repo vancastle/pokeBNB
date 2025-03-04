@@ -1,5 +1,6 @@
 class DecksController < ApplicationController
-  before_action :set_deck, only: %i[show]
+  before_action :set_deck, only: :show
+  before_action :set_user, only: %i[new create]
 
   def index
     @decks = Deck.all
@@ -13,8 +14,9 @@ class DecksController < ApplicationController
 
   def create
     @deck = Deck.new(deck_params)
-    @deck.save!
-    if @review.save
+    @deck.user = @user
+
+    if @deck.save
       redirect_to deck_path(@deck)
     else
       render :new, status: :unprocessable_entity
@@ -22,6 +24,10 @@ class DecksController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def set_deck
     @deck = Deck.find(params[:id])

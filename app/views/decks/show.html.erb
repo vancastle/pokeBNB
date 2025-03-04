@@ -1,5 +1,7 @@
 <h1>Deck</h1>
 
-<p><%= @deck.name %></p>
+<h6><%= @deck.name %></h6>
+<p><%= @deck.user.username %></p>
 
 <%= link_to "Back", decks_path, class: "btn btn-success" %>
+<%= link_to "Book", new_deck_booking_path(@deck), class: "btn btn-success" %>
