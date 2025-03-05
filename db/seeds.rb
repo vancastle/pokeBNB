@@ -51,7 +51,7 @@ asset_folders.each do |folder|
     img_url = asset["url"]
     file = URI.parse(img_url).open
     name = extract_card_name(img_url)
-    card = Card.create(name: name)
+    card = Card.new(name: name)
     card.photo.attach(io: file, filename: "random.jpg", content_type: "image/jpg")
     card.save!
   end
@@ -66,18 +66,23 @@ cards = Card.all
     description: "this is a description of this deck",
     price: 5
   )
-  deck.user = all_users.sample
-  deck.save
 
-  20.times do
-    card = cards.sample
-    DeckCard.create(deck_id: deck.id, card_id: card.id)
+  taken_title = Deck.find_by(title: deck.title)
+
+  unless taken_title.nil?
+    deck.user = all_users.sample
+    deck.save!
+
+    20.times do
+      card = cards.sample
+      DeckCard.create!(deck_id: deck.id, card_id: card.id)
+    end
+
+    cloudinary_url = deck.cards.first.photo.url
+    file = URI.parse(cloudinary_url).open
+
+    deck.photo.attach(io: file, filename: "pokemon")
   end
-
-  cloudinary_url = deck.cards.first.photo.url
-  file = URI.parse(cloudinary_url).open
-
-  deck.photo.attach(io: file, filename: "pokemon")
 end
 
 # # #

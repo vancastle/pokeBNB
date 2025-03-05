@@ -3,8 +3,8 @@ class Deck < ApplicationRecord
 
   has_many :bookings
   has_many :users, through: :bookings
-  has_many :deckCards
-  has_many :cards, through: :deckCards
+  has_many :deck_cards
+  has_many :cards, through: :deck_cards
 
   has_one_attached :photo
 
