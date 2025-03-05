@@ -62,45 +62,37 @@ marc = User.create!(
   email: "marc@gamil.com"
 )
 
-
-
-pikachu = Deck.new(name: "Pikachu EX")
+pikachu = Deck.new(title: "Pikachu EX")
 associate_photos(pikachu)
 pikachu.user = victoire
 pikachu.save!
 
-
-charizard = Deck.new(name: "Charizard EX")
+charizard = Deck.new(title: "Charizard EX")
 associate_photos(charizard)
 charizard.user = victoire
 charizard.save!
 
-mewtwo = Deck.new(name: "Mewtwo EX")
+mewtwo = Deck.new(title: "Mewtwo EX")
 associate_photos(mewtwo)
 mewtwo.user = victoire
 mewtwo.save
 
-mew = Deck.new(name: "Mew EX")
+mew = Deck.new(title: "Mew EX")
 associate_photos(mew)
 mew.user = marc
 mew.save!
 
-
-dialga = Deck.new(name: "Dialga EX")
+dialga = Deck.new(title: "Dialga EX")
 associate_photos(dialga)
 dialga.user = alvaro
 dialga.save!
 
-
-
-palkia = Deck.new(name: "Palkia EX")
+palkia = Deck.new(title: "Palkia EX")
 associate_photos(palkia)
 palkia.user = alvaro
 palkia.save!
 
-
-
-arceus = Deck.new(name: "Arceus EX")
+arceus = Deck.new(title: "Arceus EX")
 associate_photos(arceus)
 arceus.user = erwann
 arceus.save!

@@ -6,5 +6,5 @@ class Deck < ApplicationRecord
 
   has_many_attached :photos
 
-  validates :name, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: true
 end
