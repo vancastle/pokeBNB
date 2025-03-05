@@ -1,0 +1,30 @@
+.btn-flat {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 12px 30px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.btn-flat:hover {
+background-color: #ff4757;
+transform: translateY(-3px);
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+display: flex;
+justify-content: flex-end;
+gap: 20px;
+margin-top: 20px;
+}
+
+.button-before-footer {
+display: flex;
+justify-content: center;
+}
