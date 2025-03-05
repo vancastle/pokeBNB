@@ -4,7 +4,7 @@
       <div class="col">
         <div class="card h-100" style="width: 18rem;">
           <%= link_to deck_path(deck) do %>
-            <img src=<%= deck.img_url %> class="card-img-top" alt=<%= deck.title %>>
+            <%= cl_image_tag deck.photo.key, class: "card-img-top" %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= deck.title %></h5>
@@ -16,5 +16,8 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="mt-3">
+    <%= link_to "Back", root_path, class: "btn btn-primary" %>
   </div>
 </div>
