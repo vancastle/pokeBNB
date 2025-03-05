@@ -2,14 +2,11 @@
 .box {
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-evenly;
 }
 
-.box>* {
-  flex: 1 1 160px;
-}
 
 .card-trip {
-  width: 250px;
   overflow: hidden;
   background: white;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -17,12 +14,19 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-trip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 
 .card-trip > img {
-  height: 350px;
-  width: 100%;
+  height: 100%;
+  width: 300px;
   object-fit: cover;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -36,6 +40,7 @@
   opacity: 0.7;
   margin: 0;
 }
+
 
 
 .card-trip .card-trip-infos {
