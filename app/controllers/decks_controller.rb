@@ -6,7 +6,8 @@ class DecksController < ApplicationController
     @decks = Deck.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @deck = Deck.new

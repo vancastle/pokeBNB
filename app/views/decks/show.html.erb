@@ -36,12 +36,12 @@
         </div>
       </div>
     </div>
-  
+
   <div class="container m-1 border">
     <h2>Decks cards</h2>
     <ul class="list-group d-flex flex-row flex-wrap">
-      <% @deck.photos.each do |photo| %>
-        <li class="list-group-item col-3"><%= cl_image_tag photo.key, class: "img-fluid" %></li>
+      <% @deck.cards.each do |card| %>
+        <li class="list-group-item col-3"><%= cl_image_tag card.photo.key, class: "img-fluid" %></li>
       <% end %>
     </ul>
 
