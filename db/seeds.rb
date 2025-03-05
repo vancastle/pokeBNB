@@ -1,43 +1,12 @@
 require "open-uri"
 
+DeckCard.destroy_all
+Card.destroy_all
 Booking.destroy_all
 Deck.destroy_all
 User.destroy_all
 
-# asset = single card
-def get_asset_urls
-  asset_folders = [
-    "ex-team-magma-vs-team-aqua",
-    "jumbo",
-    "mcdonalds",
-    "pokemon-organized-play-series-1",
-    "pokemon-organized-play-series-2",
-    "pokemon-organized-play-series-3",
-    "pokemon-organized-play-series-4",
-    "pokemon-organized-play-series-5",
-    "pokemon-organized-play-series-6",
-    "pokemon-organized-play-series-7",
-  ]
-
-  random_folders = asset_folders.sample(3)
-  random_assets = random_folders.map do |folder|
-    Cloudinary::Api.resources_by_asset_folder(folder)["resources"].sample(4)
-  end.flatten
-
-  random_urls = random_assets.map do |asset|
-    asset["url"]
-  end
-
-  random_urls
-end
-
-def associate_photos(deck)
-  get_asset_urls.each do |url|
-    file = URI.parse(url).open
-    deck.photos.attach(io: file, filename: "random.jpg", content_type: "image/jpg")
-  end
-end
-
+# Users seed
 erwann = User.create!(
   username: "edefoy",
   password: "pwd123",
@@ -62,37 +31,98 @@ marc = User.create!(
   email: "marc@gamil.com"
 )
 
-pikachu = Deck.new(title: "Pikachu EX")
-associate_photos(pikachu)
-pikachu.user = victoire
-pikachu.save!
+all_users = [erwann, alvaro, victoire, marc]
 
-charizard = Deck.new(title: "Charizard EX")
-associate_photos(charizard)
-charizard.user = victoire
-charizard.save!
+# Cards seed
+asset_folders = [
+  "ex-team-magma-vs-team-aqua",
+  "jumbo",
+  "mcdonalds"
+]
 
-mewtwo = Deck.new(title: "Mewtwo EX")
-associate_photos(mewtwo)
-mewtwo.user = victoire
-mewtwo.save
+def extract_card_name(url)
+  match = url.match(%r{/([^/_]+)_})
+  match ? match[1].gsub("-", " ") : nil
+end
 
-mew = Deck.new(title: "Mew EX")
-associate_photos(mew)
-mew.user = marc
-mew.save!
+asset_folders.each do |folder|
+  assets = Cloudinary::Api.resources_by_asset_folder(folder)["resources"]
+  assets.each do |asset|
+    img_url = asset["url"]
+    file = URI.parse(img_url).open
+    name = extract_card_name(img_url)
+    card = Card.create(name: name)
+    card.photo.attach(io: file, filename: "random.jpg", content_type: "image/jpg")
+    card.save!
+  end
+end
 
-dialga = Deck.new(title: "Dialga EX")
-associate_photos(dialga)
-dialga.user = alvaro
-dialga.save!
+cards = Card.all
 
-palkia = Deck.new(title: "Palkia EX")
-associate_photos(palkia)
-palkia.user = alvaro
-palkia.save!
+# Decks seed (with DeckCards)
+10.times do
+  deck = Deck.new(
+    title: Faker::Games::Pokemon.location,
+    description: "this is a description of this deck",
+    price: 5
+  )
+  deck.user = all_users.sample
+  deck.save
 
-arceus = Deck.new(title: "Arceus EX")
-associate_photos(arceus)
-arceus.user = erwann
-arceus.save!
+  20.times do
+    card = cards.sample
+    DeckCard.create(deck_id: deck.id, card_id: card.id)
+  end
+
+  cloudinary_url = deck.cards.first.photo.url
+  file = URI.parse(cloudinary_url).open
+
+  deck.photo.attach(io: file, filename: "pokemon")
+end
+
+# # #
+# # #
+
+# # asset = single card
+# def get_asset_urls
+#   asset_folders = [
+#     "ex-team-magma-vs-team-aqua",
+#     "jumbo",
+#     "mcdonalds",
+#     "pokemon-organized-play-series-1",
+#     "pokemon-organized-play-series-2",
+#     "pokemon-organized-play-series-3",
+#     "pokemon-organized-play-series-4",
+#     "pokemon-organized-play-series-5",
+#     "pokemon-organized-play-series-6",
+#     "pokemon-organized-play-series-7"
+#   ]
+
+#   random_folders = asset_folders.sample(5)
+#   random_assets = random_folders.map do |folder|
+#     Cloudinary::Api.resources_by_asset_folder(folder)["resources"].sample(4)
+#   end.flatten
+
+#   random_urls = random_assets.map do |asset|
+#     asset["url"]
+#   end
+
+#   random_urls
+# end
+
+# def associate_photos(deck)
+#   get_asset_urls.each_with_index do |url, index|
+#     file = URI.parse(url).open
+#     card = Card.new(name: extract_pokemon_name(url))
+#     card.photo.attach(io: file, filename: "random.jpg", content_type: "image/jpg")
+#     card.save!
+
+#     if index.zero?
+#       deck.photo.attach(io: file, filename: "random.jpg", content_type: "image/jpg")
+#       deck.user = all_users.sample
+#       deck.save!
+#     end
+
+#     DeckCard.new(card_id: card.id, deck_id: deck.id)
+#   end
+# end
