@@ -21,7 +21,7 @@
   <div class="row justify-content-center">
     <% @decks.each do |deck| %>
       <div class="col-sm-4 my-3">
-        <div class="card h-100 card-trip">
+        <div class="card h-100 card-trip2">
           <%= link_to deck_path(deck) do %>
             <%= cl_image_tag deck.photo.key, class: "card-img-top" %>
           <% end %>
