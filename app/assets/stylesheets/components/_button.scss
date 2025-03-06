@@ -9,6 +9,7 @@
   transition: all 0.3s ease;
   display: inline-block;
   margin-top: 20px;
+  font: bold;
 }
 
 .btn-flat:hover {
@@ -27,4 +28,5 @@ margin-top: 20px;
 .button-before-footer {
 display: flex;
 justify-content: center;
+padding-bottom: 30px;
 }

@@ -9,24 +9,17 @@
     <div class="col-6">
       <img src="" alt="">
     </div>
-
+    <% if current_user %>
     <div class="col-6">
-      <%= simple_form_for [@deck, @booking], data: { insert_in_list_target: "form" } do |f| %>
-      <%= f.input :date_of_beginning,
-              as: :string,
-              input_html: { data: { controller: "datepicker" } } %>
-      <%= f.input :date_of_end,
-              as: :string,
-              input_html: { data: { controller: "datepicker" } } %>
-      <%# f.input :date_of_beginning, as: :date %>
-      <%# f.input :date_of_end, as: :date %>
-
-      <div class="btn btn-primary">
-        <%= f.button :submit %>
+      <%= simple_form_for [@deck, @booking] do |f| %>
+      <div data-controller = "datepicker" >
+        <%= f.input :date_of_beginning, label: "From", as: :string, input_html: { data: { datepicker_target: "start" } } %>
+        <%= f.input :date_of_end, labet: "To", as: :hidden, input_html: { data: { datepicker_target: "end" } } %>
+        <%= f.submit "Book now", class:"p-submit"%>
       </div>
-
       <% end %>
     </div>
+    <% end %>
   </div>
   <div>
   </div>
