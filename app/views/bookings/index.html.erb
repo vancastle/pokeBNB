@@ -4,7 +4,7 @@
       <ul>
         <% @bookings.each do |booking| %>
           <li>
-            <span><%= booking.deck.name %></span> |
+            <span><%= booking.deck.title %></span> |
             <span>from: <%= booking.date_of_beginning %></span>
             <span>until: <%= booking.date_of_end %></span>
           </li>
