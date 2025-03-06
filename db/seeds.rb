@@ -82,6 +82,7 @@ cards = Card.all
     file = URI.parse(cloudinary_url).open
 
     deck.photo.attach(io: file, filename: "pokemon")
+
   end
 end
 
