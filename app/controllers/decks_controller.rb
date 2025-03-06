@@ -1,16 +1,22 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: :show
-  before_action :set_user, only: %i[index new create]
   skip_before_action :authenticate_user!, only: %i[index show]
 
+  # See others decks
   def index
     @decks = Deck.all
     @decks = search_decks(@decks) if params[:query].present?
-    @decks = filter_decks(@decks)
+    @decks = others_decks(@decks) unless current_user.nil?
   end
 
   def show
     @booking = Booking.new
+  end
+
+  # See self decks
+  def my_decks
+    @decks = Deck.all
+    @decks = self_decks(@decks)
   end
 
   def new
@@ -19,7 +25,7 @@ class DecksController < ApplicationController
 
   def create
     @deck = Deck.new(deck_params)
-    @deck.user = @user
+    @deck.user = current_user
 
     if @deck.save
       redirect_to deck_path(@deck)
@@ -30,12 +36,20 @@ class DecksController < ApplicationController
 
   private
 
+  def set_deck
+    @deck = Deck.find(params[:id])
+  end
+
   def deck_params
     params.require(:deck).permit(:name)
   end
 
-  def filter_decks(decks)
-    decks.reject { |deck| deck.user.username == @user.username }
+  def self_decks(decks)
+    decks.select { |deck| deck.user.username == current_user.username }
+  end
+
+  def others_decks(decks)
+    decks.reject { |deck| deck.user.username == current_user.username }
   end
 
   def search_decks(decks)
@@ -45,13 +59,5 @@ class DecksController < ApplicationController
       OR cards.name @@ :query
     SQL
     decks.joins(:cards).where(sql_subquery, query: "%#{params[:query]}%").distinct
-  end
-
-  def set_deck
-    @deck = Deck.find(params[:id])
-  end
-
-  def set_user
-    @user = current_user
   end
 end
