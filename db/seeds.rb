@@ -69,7 +69,7 @@ cards = Card.all
 
   taken_title = Deck.find_by(title: deck.title)
 
-  unless taken_title.nil?
+  if taken_title.nil?
     deck.user = all_users.sample
     deck.save!
 
