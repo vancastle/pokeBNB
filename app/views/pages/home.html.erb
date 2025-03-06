@@ -1,11 +1,10 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=asset_path('1.jpg') %>);">
   <div class="container">
-    <h1><strong>POKE BNB </strong></h1>
-    <p>Loue ton deck, domine les tournois.</p>
+    <h1><%= image_tag("pokebnb-logo.png", width: 350, height: 180) %></h1>
+    <p><strong>Loue ton deck, domine les tournois!</strong></p>
     <div class="button-container">
       <%= link_to "Louer un deck", decks_path, class: "btn btn-flat" %>
-      <a class="btn btn-flat" href="#">Mettre en location</a>
     </div>
   </div>
 </div>
@@ -18,80 +17,48 @@
 
           <div class="carousel-item active">
             <div class="cards d-flex" alt="First slide">
-              <div class="card-trip">
-                <div><p>"L'Ascension du Dragon Céleste"</p></div>
-                <img src="https://static.pkmcards.fr/cards/fr/ssp/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-ssp-fr-037-ecarlate-et-violet-etincelles-deferlantes-scovilain-ex.webp" class="d-block w-100"/>
-                <div class="card-trip-infos">
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                  </div>
-              </div>
-              <div class="card-trip">
-                <div><p>"La Légende Abyssale"</p></div>
-                <img src="https://static.pkmcards.fr/cards/fr/tef/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-tef-fr-193-ecarlate-et-violet-forces-temporelles-ectoplasma-ex.webp" class="d-block w-100" />
-                <div class="card-trip-infos">
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% @decks1.each do |deck| %>
+                <div class="card-trip">
+                    <div><p><%= deck.title %></p></div>
+                  <%= link_to deck_path(deck) do %>
+                    <%= cl_image_tag(deck.photo.key, class: "d-block w-100") %>
+                    <div class="card-trip-infos">
+                      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                      </div>
+                  <% end %>
                 </div>
-              </div>
-              <div class="card-trip">
-                <div><p>"L'Éveil du Tigre Prismatique"</p></div>
-                <img src="https://static.pkmcards.fr/cards/fr/bus/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-bus-fr-080-soleil-et-lune-ombres-ardentes-marshadow-gx.webp" class="d-block w-100"  alt="Third slide"/>
-                <div class="card-trip-infos">
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                </div>
-            </div>
+              <% end %>
             </div>
           </div>
 
           <div class="carousel-item">
             <div class="cards  d-flex" alt="Second slide">
-              <div class="card-trip">
-                <div><p>"La Furie de l'Étoile Sombre"</p></div>
-                <img src="https://static.pkmcards.fr/cards/fr/pre/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-pre-fr-014-ecarlate-et-violet-evolutions-prismatiques-pyroli-teracristal-ex.webp" class="d-block w-100" />
-                <div class="card-trip-infos">
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                </div>
-              </div>
-              <div class="card-trip">
-                <div><p>"L'Assaut du Serpent Éthéré"</p></div>
-                <img src="https://static.pkmcards.fr/cards/fr/pre/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-pre-fr-011-ecarlate-et-violet-evolutions-prismatiques-pomdorochi-ex.webp" class="d-block w-100"  alt="Third slide"/>
-                <div class="card-trip-infos">
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                </div>
-            </div>
-              <div class="card-trip">
-                <div><p>"Le Courroux du Phénix Astral"</p></div>
-                <img src="https://static.pkmcards.fr/cards/fr/obf/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-obf-fr-153-ecarlate-et-violet-flammes-obsidiennes-melmetal-ex.webp" class="d-block w-100"  alt="Fourth slide"/>
-                <div class="card-trip-infos">
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                </div>
-            </div>
+              <% @decks2.each do |deck| %>
+                  <div class="card-trip">
+                    <div><p><%= deck.title %></p></div>
+                   <%= link_to deck_path(deck) do %>
+                      <%= cl_image_tag(deck.photo.key, class: "d-block w-100") %>
+                      <div class="card-trip-infos">
+                        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                      </div>
+                    <% end %>
+                  </div>
+              <% end %>
             </div>
           </div>
 
-       <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
     </div>
   </div>
 </div>
 
 <div class="button-before-footer">
       <%= link_to "View more Decks", decks_path, class: "btn btn-flat" %>
-</div>
-
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#">Contact</a>
-  </div>
-  <div class="footer-copyright">
-    © 2025 All rights reserved.
-  </div>
 </div>
