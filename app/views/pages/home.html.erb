@@ -19,7 +19,7 @@
             <div class="cards d-flex" alt="First slide">
               <% @decks1.each do |deck| %>
                 <div class="card-trip">
-                    <div><p><%= deck.title %></p></div>
+                    <div><h4><%= deck.title %></h4></div>
                   <%= link_to deck_path(deck) do %>
                     <%= cl_image_tag(deck.photo.key, class: "d-block w-100") %>
                     <div class="card-trip-infos">
