@@ -1,6 +1,7 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: :show
   before_action :set_user, only: %i[index new create]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @decks = Deck.all
