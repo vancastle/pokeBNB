@@ -1,7 +1,7 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=asset_path('1.jpg') %>);">
   <div class="container">
-    <h1><strong>POKE BNB </strong></h1>
+    <%= cl_image_tag("pokebnb-logo", width: 200, height: 100, crop: :fill) %>
     <p>Loue ton deck, domine les tournois.</p>
     <div class="button-container">
       <%= link_to "Louer un deck", decks_path, class: "btn btn-flat" %>
@@ -18,6 +18,15 @@
 
           <div class="carousel-item active">
             <div class="cards d-flex" alt="First slide">
+              <% @decks.each do |deck| %>
+                <div class="card-trip">
+                  <div><p><%= deck.title %></p></div>
+                  <img src="https://static.pkmcards.fr/cards/fr/ssp/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-ssp-fr-037-ecarlate-et-violet-etincelles-deferlantes-scovilain-ex.webp" class="d-block w-100"/>
+                  <div class="card-trip-infos">
+                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                    </div>
+                </div>
+              <% end %>
               <div class="card-trip">
                 <div><p>"L'Ascension du Dragon Céleste"</p></div>
                 <img src="https://static.pkmcards.fr/cards/fr/ssp/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-ssp-fr-037-ecarlate-et-violet-etincelles-deferlantes-scovilain-ex.webp" class="d-block w-100"/>
@@ -44,6 +53,15 @@
 
           <div class="carousel-item">
             <div class="cards  d-flex" alt="Second slide">
+            <% @decks.each do |deck| %>
+                <div class="card-trip">
+                  <div><p><%= deck.title %></p></div>
+                  <img src="https://static.pkmcards.fr/cards/fr/ssp/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-ssp-fr-037-ecarlate-et-violet-etincelles-deferlantes-scovilain-ex.webp" class="d-block w-100"/>
+                  <div class="card-trip-infos">
+                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                    </div>
+                </div>
+              <% end %>
               <div class="card-trip">
                 <div><p>"La Furie de l'Étoile Sombre"</p></div>
                 <img src="https://static.pkmcards.fr/cards/fr/pre/image-cartes-a-collectionner-pokemon-card-game-tcg-pkmcards-pre-fr-014-ecarlate-et-violet-evolutions-prismatiques-pyroli-teracristal-ex.webp" class="d-block w-100" />
@@ -82,16 +100,4 @@
 
 <div class="button-before-footer">
       <%= link_to "View more Decks", decks_path, class: "btn btn-flat" %>
-</div>
-
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#">Contact</a>
-  </div>
-  <div class="footer-copyright">
-    © 2025 All rights reserved.
-  </div>
 </div>
