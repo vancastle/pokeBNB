@@ -26,6 +26,10 @@
                 <div class="col-6 p-0">
                   <%= link_to "Book", new_deck_booking_path(@deck), class: "btn btn-primary col-12 pl-0 pr-0 " %>
                 </div>
+                <div data-controller="toggle" class="mt-5">
+                    <button class="btn btn-outline-primary">Add a new booking</button>
+                    <%= render "form", booking: @booking %>
+                </div>
                 <div class="col-6 p-0">
                   <%# link_to "Back", decks_path, class: "btn btn-success col-12 pl-0 pr-0 " %>
                 </div>

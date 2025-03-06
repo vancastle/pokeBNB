@@ -2,12 +2,13 @@ class BookingsController < ApplicationController
   before_action :set_user, only: %i[index new create]
   before_action :set_deck, only: %i[new create]
   def index
-    @bookings = Booking.where("user_id = ?", @user.id)
+    @bookings = Booking.all
+    # @bookings = Booking.where("user_id = ?", @user.id)
+    @booking = Booking.new
   end
 
   def new
 
-    @booking = Booking.new
   end
 
   def create
