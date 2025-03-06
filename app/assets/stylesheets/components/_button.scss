@@ -12,6 +12,34 @@
   font: bold;
 }
 
+.btn-flat2 {
+  background-color: #20800d;
+  color: white;
+  padding: 12px 30px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+  font: bold;
+}
+
+.btn-flat2-input {
+  background-color: white;
+  color: #20800d; /* Texte en vert, correspondant au bouton */
+  padding: 12px 30px;
+  font-size: 0.8rem;
+  border: 2px solid #20800d; /* Bordure verte pour l'harmonie */
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+  width: auto;
+}
+
 .btn-flat:hover {
 background-color: #ff4757;
 transform: translateY(-3px);
