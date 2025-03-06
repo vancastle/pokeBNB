@@ -63,7 +63,7 @@ cards = Card.all
 10.times do
   deck = Deck.new(
     title: Faker::Games::Pokemon.location,
-    description: "this is a description of this deck",
+    description: "",
     price: 5
   )
 

@@ -28,3 +28,21 @@ margin-top: 20px;
 display: flex;
 justify-content: center;
 }
+
+.price {
+  border: solid 0.1rem #ff6b6b;
+  background-color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  padding: 12px 30px;
+  border-radius: 30px;
+}
+
+.test {
+  background-color: #ff4757;
+}

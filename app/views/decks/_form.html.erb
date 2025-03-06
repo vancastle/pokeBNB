@@ -1,43 +1,51 @@
 
 <div class="container">
-  <div>
-  <h1>Rent a deck</h1>
-  <h2><%= @deck.title %></h2>
 
-  <div class="row">
+    <div class="row border p-3 no-gutter">
 
-    <div class="col-6">
-      <img src="" alt="">
-    </div>
-    <% if current_user %>
-    <div class="col-6">
-      <%= simple_form_for [@deck, @booking] do |f| %>
-      <div data-controller = "datepicker" >
-        <%= f.input :date_of_beginning, label: "From", as: :string, input_html: { data: { datepicker_target: "start" } } %>
-        <%= f.input :date_of_end, labet: "To", as: :hidden, input_html: { data: { datepicker_target: "end" } } %>
-        <%= f.submit "Book now", class:"p-submit"%>
+      <div class="col-6 d-flex justify-content-center">
+        <div><%= cl_image_tag @deck.photo.key, class: "img-fluid" %></div>
+      </div>
+
+      <div class="col-6">
+
+          <div class="col-12">
+              <div class="col-12">
+                <h2><%= @deck.title %></h2>
+              </div>
+
+              <div class="btn p-0 m-0">
+                <p>Owner : <%= @deck.user.username %></p>
+              </div>
+
+              <div class="">
+                <h5 class="price"><%= @deck.price %>€ /day</h5>
+              </div>
+              <% if current_user %>
+              <%= simple_form_for [@deck, @booking] do |f| %>
+              <div data-controller = "datepicker" >
+              <div class="row ">
+                <div class="col-6">
+                  <div class="m-1">
+                    <%= f.input :date_of_beginning, label: "From", as: :string, input_html: { data: { datepicker_target: "start" } } %>
+                  </div>
+                  <div class="m-10">
+                    <%= f.input :date_of_end, labet: "To", as: :hidden, input_html: { data: { datepicker_target: "end" } } %>
+                  </div>
+                </div>
+                <div class="col-6 d-flex align-items-center">
+                  <div class="col-12 d-flex align-item-baseline pt-3">
+                    <%= f.submit "Book now", class:"p-submit col-12 btn-flat"%>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+
+        <% end %>
       </div>
       <% end %>
     </div>
-    <% end %>
-  </div>
-  <div>
-  </div>
-    <h2>Decks cards</h2>
-      <ul>
-        <% @deck.cards.each do |card| %>
-          <li><%= cl_image_tag card.photo.key %></li>
-        <% end %>
-      </ul>
 
-      <%#
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Pokémon</h5>
-          </div>
-        </div>
-      %>
 
-  </div>
 </div>

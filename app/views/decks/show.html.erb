@@ -2,55 +2,23 @@
 <div class="container">
     <div><%= link_to "Back", decks_path, class: "btn btn-light col-1 mt-1 mb-1" %> </div>
 
-    <div class="row border p-3 no-gutter">
-      <div class="col-6">
-        <%# Ajouter l'image principale du deck cl_image_tag  %>
-        <%=%>
-      </div>
-      <div class="col-6">
-        <div class="container">
-          <div class="column">
-            <div class="col-12">
-              <h3><%= @deck.title %></h3>
-            </div>
-
-            <div class="col-12">
-              <div class="btn p-0 m-0">
-                <p>Owner : <%= @deck.user.username %></p>
-              </div>
-            </div>
-
-
-            <div class="container">
-              <div class="row">
-                <div class="col-6 p-0">
-                  <%# <%= link_to "Book", new_deck_booking_path(@deck), class: "btn btn-primary col-12 pl-0 pr-0 " %>
-                </div>
-                <%# <div data-controller="toggle" class="mt-5">
-                  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new booking</button>
-                  <div data-toggle-target="togglableElement" class="d-none"> %>
-                  <div>
-                    <%= render "form", booking: @booking %>
-                  </div>
-                <div class="col-6 p-0">
-                  <%# link_to "Back", decks_path, class: "btn btn-success col-12 pl-0 pr-0 " %>
-                </div>
-              </div>
-
-            </div>
+    
+          <div>
+            <%= render "form", booking: @booking %>
           </div>
-        </div>
+
+
+      <div class="container m-1 border">
+        <h2>Decks cards</h2>
+       <ul class="list-group d-flex flex-row flex-wrap">
+         <% @deck.cards.each do |card| %>
+            <li class="list-group-item col-3"><%= cl_image_tag card.photo.key, class: "img-fluid" %></li>
+         <% end %>
+        </ul>
+
       </div>
-    </div>
-
-  <div class="container m-1 border">
-    <h2>Decks cards</h2>
-    <ul class="list-group d-flex flex-row flex-wrap">
-      <% @deck.cards.each do |card| %>
-        <li class="list-group-item col-3"><%= cl_image_tag card.photo.key, class: "img-fluid" %></li>
-      <% end %>
-    </ul>
-
   </div>
+
+
 
 </div>
