@@ -14,8 +14,9 @@
 
 .price {
   border: solid 0.1rem #ff6b6b;
-  background-color: white;
-  padding: 12px 30px;
+
+  color: #ff6b6b;
+  padding: 8px 30px;
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -34,4 +35,15 @@
   text-align: left;
   margin-left: -30px;
   font-size: larger;
+}
+
+.tag-owner {
+  background-color: whitesmoke;
+  padding: 12px 30px;
+  border-radius: 10px;
+}
+
+.tag-1 {
+  background-color: #ff4757;
+  color: white;
 }

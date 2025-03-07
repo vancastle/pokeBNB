@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_deck, only: %i[new create]
   def index
-    @bookings = Booking.all
+    @bookings = filter_bookings(Booking.all)
     # @bookings = Booking.where("user_id = ?", @user.id)
     @booking = Booking.new
   end
@@ -22,6 +22,10 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def filter_bookings(bookings)
+    bookings.select { |booking| booking.user == current_user}
+  end
 
   def set_deck
     @deck = Deck.find(params[:deck_id])

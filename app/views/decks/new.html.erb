@@ -1,5 +1,8 @@
-<h1>Ajout d'un nouveau Deck</h1>
+<div class="container">
+  <h1>Create your deck!!</h1>
+  <%= render "deck_form" %>
 
-<%= render "deck_form" %>
-
-<%= link_to "Back", decks_path, class: "btn btn-success" %>
+  <div class="button-before-footer">
+    <%= link_to "Back", my_decks_path, class: "btn btn-flat" %>
+  </div>
+</div>
