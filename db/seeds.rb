@@ -37,7 +37,14 @@ all_users = [erwann, alvaro, victoire, marc]
 asset_folders = [
   "ex-team-magma-vs-team-aqua",
   "jumbo",
-  "mcdonalds"
+  "mcdonalds",
+  "pokemon-organized-play-series-1",
+  "pokemon-organized-play-series-2",
+  "pokemon-organized-play-series-3",
+  "pokemon-organized-play-series-4",
+  "pokemon-organized-play-series-5",
+  "pokemon-organized-play-series-6",
+  "pokemon-organized-play-series-7"
 ]
 
 def extract_card_name(url)
