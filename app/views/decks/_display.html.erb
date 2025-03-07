@@ -1,11 +1,19 @@
 <div class="container container-deck">
   <div class="container">
-    <div class="col-sm-12 col-md-10 col-lg-8 my-3">
+    <div class="col-12">
       <div class="d-flex justify-content-between align-items-center mt-3">
-        <div>
-          <%= link_to "Back", root_path, class: "btn btn-flat" %>
+        <div class="row">
+          <div class="col-6">
+            <%= link_to "Back", root_path, class: "btn btn-flat" %>
+          </div>
+          <% if type == "mine" %>
+            <div class="button-before-footer col-6">
+              <%= link_to "New", new_deck_path,class: "btn btn-flat" %>
+            </div>
+          <% end %>
         </div>
-        <div class="d-flex" style = "padding-left: 710px;">
+
+        <div class="d-flex " >
           <%= form_with url: decks_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query, params[:query], class: "form-control btn-flat2-input" , placeholder: "Find a deck" %>
             <%= submit_tag "Search", name: "", class: "btn btn-flat2 ms-3" %>
