@@ -1,27 +1,5 @@
 <h1>Ajout d'un nouveau Deck</h1>
 
-<div class="mb-3">
-  <label for="title" class="form-label">Title</label>
-  <input type="text" class="form-control" id="title" placeholder="Title">
-</div>
-<div class="mb-3">
-  <label for="description" class="form-label">Example textarea</label>
-  <textarea class="form-control" id="description" rows="3"></textarea>
-</div>
-<div class="mb-3">
-  <label for="img_url" class="form-label">Image URL</label>
-  <input type="text" class="form-control" id="img_url" placeholder="url">
-</div>
+<%= render "deck_form" %>
 
-<br>
-<br>
-<br>
--------------------------------------------------------------------------
-
-<%= simple_form_for(@deck) do |f| %>
-  <%= f.input :title, label: "Title" %>
-  <%= f.input :description, label: "Description" %>
-  <%= f.input :img_url, label: "Image url" %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
 <%= link_to "Back", decks_path, class: "btn btn-success" %>

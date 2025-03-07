@@ -1,5 +1,6 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: :show
+  before_action :set_cards, only: %i[new edit]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   # See others decks
@@ -9,14 +10,14 @@ class DecksController < ApplicationController
     @decks = others_decks(@decks) unless current_user.nil?
   end
 
-  def show
-    @booking = Booking.new
-  end
-
   # See self decks
   def my_decks
     @decks = Deck.all
     @decks = self_decks(@decks)
+  end
+
+  def show
+    @booking = Booking.new
   end
 
   def new
@@ -35,6 +36,10 @@ class DecksController < ApplicationController
   end
 
   private
+
+  def set_cards
+    @cards = Card.all
+  end
 
   def set_deck
     @deck = Deck.find(params[:id])
