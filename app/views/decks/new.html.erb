@@ -1,8 +1,11 @@
 <div class="container">
-  <h1>Create your deck!!</h1>
-  <%= render "deck_form" %>
-
-  <div class="button-before-footer">
+  <div class="d-flex pb-2 m-2">
     <%= link_to "Back", my_decks_path, class: "btn btn-flat" %>
   </div>
+<div class="form-container p-5 m-2">
+  <h2 class="form-title">Create your deck!!</h2>
+  <%= render "deck_form" %>
+
+</div>
+
 </div>
