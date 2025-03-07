@@ -1,11 +1,18 @@
+.page-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  }
+
 .footer {
   background: #c8d3d0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 60px;
   padding: 0px 40px;
   color: rgba(0,0,0,0.3);
+  margin-top: 0%;
 }
 
 .footer-links {
@@ -36,8 +43,4 @@
   background: rgba(0, 195, 255, 0.1);
   box-shadow: 0 4px 15px rgba(0, 255, 198, 0.5);
   transform: scale(1.15) rotate(-2deg);
-}
-
-.footer .fa-heart {
-  color: #D23333;
 }
