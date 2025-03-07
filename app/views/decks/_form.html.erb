@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <div class="row border p-3 no-gutter">
+    <div class="row p-3 no-gutter form-container">
 
       <div class="col-6 d-flex justify-content-center">
         <div><%= cl_image_tag @deck.photo.key, class: "img-fluid" %></div>
@@ -11,36 +11,43 @@
 
           <div class="col-12">
               <div class="col-12">
-                <h2><%= @deck.title %></h2>
+                <h2 class="deck-title"><%= @deck.title %></h2>
               </div>
 
               <div class="btn p-0 m-0">
                 <p>Owner : <%= @deck.user.username %></p>
               </div>
 
-              <div class="">
-                <h5 class="price"><%= @deck.price %>€ /day</h5>
-              </div>
-              <% if current_user %>
-              <%= simple_form_for [@deck, @booking] do |f| %>
-              <div data-controller = "datepicker" >
-              <div class="row ">
-                <div class="col-6">
-                  <div class="">
-                    <%= f.input :date_of_beginning, label: "From", as: :string, input_html: { data: { datepicker_target: "start" } } %>
-                  </div>
-                  <div class="">
-                    <%= f.input :date_of_end, labet: "To", as: :hidden, input_html: { data: { datepicker_target: "end" } } %>
-                  </div>
-                </div>
-                <div class="col-6 d-flex align-items-center">
-                  <div class="col-12 d-flex align-item-baseline pt-3">
-                    <%= f.submit "Book now", class:"p-submit col-12 btn-flat"%>
-                  </div>
-                </div>
+              <div>
+                <p><%= @deck.description %></p>
               </div>
 
-          </div>
+            <div class="align-self-end">
+                <div class="">
+                  <h5 class="price"><%= @deck.price %>€ /day</h5>
+                </div>
+                <% if current_user %>
+                <%= simple_form_for [@deck, @booking] do |f| %>
+                <div data-controller = "datepicker" >
+                <div class="row ">
+                  <div class="col-6">
+                    <div class="mt-4">
+                      <%= f.input :date_of_beginning, label: "From", as: :string, input_html: { data: { datepicker_target: "start" } } %>
+                    </div>
+                    <div class="">
+                      <%= f.input :date_of_end, labet: "To", as: :hidden, input_html: { data: { datepicker_target: "end" } } %>
+                    </div>
+                  </div>
+
+                  <div class="col-6 d-flex align-items-center">
+                    <div class="col-12 d-flex align-item-baseline pt-3">
+                      <%= f.submit "Book now", class:"p-submit col-12 btn-flat"%>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            </div>
 
         <% end %>
       </div>

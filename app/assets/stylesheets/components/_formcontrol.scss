@@ -1,0 +1,37 @@
+.form-control{
+  border: solid 0.1rem #ff6b6b;
+  border-radius: 30px;
+}
+
+.date {
+  padding: 12px 30px;
+  border-radius: 30px;
+}
+
+.test {
+  background-color: #ff4757;
+}
+
+.price {
+  border: solid 0.1rem #ff6b6b;
+  background-color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.form-container {
+  border-radius: 10px;
+  background-color: white;
+}
+
+.index-deck-container {
+  background-color: white;
+}
+
+.deck-title {
+  text-align: left;
+  margin-left: -30px;
+  font-size: larger;
+}
