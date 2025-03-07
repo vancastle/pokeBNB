@@ -3,11 +3,11 @@
   <%= f.input :description, label: "Description" %>
   <%= f.input :price, label: "Price" %>
 
-  <ul class="list-group d-flex flex-row flex-wrap">
-    <% @deck.cards.each do |card| %>
-      <li class="list-group-item col-3"><%= cl_image_tag card.photo.key, class: "img-fluid" %></li>
-    <% end %>
-  </ul>
+  <%= f.association :cards,
+                    as: :check_boxes,
+                    as: :check_boxes,
+                    input_html: { class: "tag-selector" },
+                    item_wrapper_class: 'tag-item' %>
 
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
