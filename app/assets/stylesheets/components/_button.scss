@@ -28,16 +28,16 @@
 
 .btn-flat2-input {
   background-color: white;
-  color: #20800d; /* Texte en vert, correspondant au bouton */
+  color: #20800d;
   padding: 12px 30px;
   font-size: 0.8rem;
-  border: 2px solid #20800d; /* Bordure verte pour l'harmonie */
+  border: 2px solid #20800d;
   border-radius: 30px;
   text-decoration: none;
   transition: all 0.3s ease;
   display: inline-block;
   margin-top: 20px;
-  width: auto;
+  width: 350px;
 }
 
 .btn-flat:hover {
@@ -58,5 +58,3 @@ display: flex;
 justify-content: center;
 padding-bottom: 30px;
 }
-
-
