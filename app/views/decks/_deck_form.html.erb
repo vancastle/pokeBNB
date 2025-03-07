@@ -1,0 +1,13 @@
+<%= simple_form_for(@deck) do |f| %>
+  <%= f.input :title, label: "Title" %>
+  <%= f.input :description, label: "Description" %>
+  <%= f.input :price, label: "Price" %>
+
+  <ul class="list-group d-flex flex-row flex-wrap">
+    <% @deck.cards.each do |card| %>
+      <li class="list-group-item col-3"><%= cl_image_tag card.photo.key, class: "img-fluid" %></li>
+    <% end %>
+  </ul>
+
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
