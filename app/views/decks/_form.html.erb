@@ -14,38 +14,43 @@
                 <h2 class="deck-title"><%= @deck.title %></h2>
               </div>
 
-              <div class="btn p-0 m-0">
-                <p>Owner : <%= @deck.user.username %></p>
+              <div class="row">
+                <p class="col-4 tag-owner">Owner : <%= @deck.user.username %></p>
+                <p class="col-4 tag-owner"><%= @deck.price %>€ /day<p>
               </div>
-
+                <div class="col-4"></div>
               <div>
                 <p><%= @deck.description %></p>
               </div>
 
             <div class="align-self-end">
                 <div class="">
-                  <h5 class="price"><%= @deck.price %>€ /day</h5>
-                </div>
-                <% if current_user %>
-                <%= simple_form_for [@deck, @booking] do |f| %>
-                <div data-controller = "datepicker" >
-                <div class="row ">
-                  <div class="col-6">
-                    <div class="mt-4">
-                      <%= f.input :date_of_beginning, label: "From", as: :string, input_html: { data: { datepicker_target: "start" } } %>
+                  <% if current_user %>
+                  <%= simple_form_for [@deck, @booking] do |f| %>
+                  <div data-controller = "datepicker">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="mt-4">
+                          <%= f.input :date_of_beginning, label: "From", as: :string, input_html: { data: { datepicker_target: "start" } } %>
+                          <%= f.input :date_of_end, labet: "To", as: :hidden, input_html: { data: { datepicker_target: "end" } } %>
+                        </div>
+
                     </div>
-                    <div class="">
-                      <%= f.input :date_of_end, labet: "To", as: :hidden, input_html: { data: { datepicker_target: "end" } } %>
-                    </div>
+                        <div class="col-6 d-flex align-items-bottom">
+                          <div class="row pt-5">
+                            <h6 class="pt-3 price">Total : <span class="">30 €</span></h6>
+                          </div>
+                        </div>
                   </div>
 
+
+                </div>
+            </div>
                   <div class="col-6 d-flex align-items-center">
                     <div class="col-12 d-flex align-item-baseline pt-3">
                       <%= f.submit "Book now", class:"p-submit col-12 btn-flat"%>
                     </div>
                   </div>
-                </div>
-            </div>
 
             </div>
 
